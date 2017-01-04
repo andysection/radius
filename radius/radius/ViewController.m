@@ -15,6 +15,7 @@
 
 @implementation ViewController{
     UIImageView *_imgView;
+    
 }
 
 
@@ -31,13 +32,27 @@
 
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    NSURL *url = [NSURL URLWithString:@"http://cc.cocimg.com/api/uploads/20150803/1438567345483993.jpg"];
-    [_imgView sd_setImageWithURL:url completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+    NSURL *url = [NSURL URLWithString:@"http://cc.cocimg.com/api/uploads/20150803/1438567345483993"];
+//    [_imgView sd_setImageWithURL:url completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+//        NSLog(@"image:%@;\n imgView.image:%@",image,_imgView.image);
+//        [image was_roundRectImageWithSize:_imgView.bounds.size fillColor:[UIColor orangeColor] radius:10 completion:^(UIImage *img) {
+//            _imgView.image = img;
+//        }];
+//    }];
+    
+    [_imgView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"head"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         NSLog(@"image:%@;\n imgView.image:%@",image,_imgView.image);
         [image was_roundRectImageWithSize:_imgView.bounds.size fillColor:[UIColor orangeColor] radius:10 completion:^(UIImage *img) {
             _imgView.image = img;
         }];
     }];
+    
+}
+
+-(void)noti{
+    /*
+     http://www.jianshu.com/p/4f505ac1bdc9
+     */
 }
 
 
