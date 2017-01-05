@@ -13,6 +13,8 @@
 
 - (void)was_roundRectImageWithSize:(CGSize)size fillColor:(UIColor *)fillColor radius:(CGFloat)radius completion:(void (^)(UIImage *))completion;
 
-- (void)setCircleImageWithUrl:(NSString *)url placeholder:(UIImage *)image;
+@end
 
+@interface UIImageView (Extension)
+- (void)setCircleImageWithUrl:(NSURL *)urlstr placeholder:(UIImage *)image fillColor:(UIColor *)color;
 @end

@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "UIImageView+WebCache.h"
 #import "UIImage+extension.h"
+#import "UIImageView+Extension.h"
 
 @interface ViewController ()
 @end
@@ -40,13 +41,14 @@
 //        }];
 //    }];
     
-    [_imgView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"head"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        NSLog(@"image:%@;\n imgView.image:%@",image,_imgView.image);
-        [image was_roundRectImageWithSize:_imgView.bounds.size fillColor:[UIColor orangeColor] radius:10 completion:^(UIImage *img) {
-            _imgView.image = img;
-        }];
-    }];
+//    [_imgView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"head"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+//        NSLog(@"image:%@;\n imgView.image:%@",image,_imgView.image);
+//        [image was_roundRectImageWithSize:_imgView.bounds.size fillColor:[UIColor orangeColor] radius:10 completion:^(UIImage *img) {
+//            _imgView.image = img;
+//        }];
+//    }];
     
+    [_imgView setCircleImageWithUrl:url placeholder:[UIImage imageNamed:@"head"] fillColor:[UIColor whiteColor]];
 }
 
 -(void)noti{

@@ -111,8 +111,6 @@
 			isa = PBXGroup;
 			children = (
 				8478E7321E0937FC002D99D0 /* lib */,
-				8478E72F1E0937CD002D99D0 /* UIImage+extension.h */,
-				8478E7301E0937CD002D99D0 /* UIImage+extension.m */,
 				8478E71B1E0937A8002D99D0 /* AppDelegate.h */,
 				8478E71C1E0937A8002D99D0 /* AppDelegate.m */,
 				8478E71E1E0937A8002D99D0 /* ViewController.h */,
@@ -122,6 +120,8 @@
 				8478E7261E0937A8002D99D0 /* LaunchScreen.storyboard */,
 				8478E7291E0937A8002D99D0 /* Info.plist */,
 				8478E7181E0937A8002D99D0 /* Supporting Files */,
+				8478E72F1E0937CD002D99D0 /* UIImage+extension.h */,
+				8478E7301E0937CD002D99D0 /* UIImage+extension.m */,
 			);
 			path = radius;
 			sourceTree = "<group>";

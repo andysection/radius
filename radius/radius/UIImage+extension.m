@@ -7,6 +7,7 @@
 //
 
 #import "UIImage+extension.h"
+#import "UIImageView+WebCache.h"
 
 @implementation UIImage (extension)
 - (void)was_cornerImageWithSize:(CGSize)size fillColor:(UIColor *)fillColor completion:(void (^)(UIImage *))completion {
@@ -89,6 +90,21 @@
             }
         });
     });
+}
+
+@end
+
+@implementation UIImageView (Extension)
+- (void)setCircleImageWithUrl:(NSURL *)url placeholder:(UIImage *)image fillColor:(UIColor *)color{
+    __weak typeof(self) weakSelf = self;
+    
+    [image was_cornerImageWithSize:self.frame.size fillColor:color completion:^(UIImage *roundPlaceHolder) {
+        [self sd_setImageWithURL:url placeholderImage:roundPlaceHolder completed:^(UIImage *img, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            [img was_cornerImageWithSize:weakSelf.frame.size fillColor:color completion:^(UIImage *radiusImage) {
+                weakSelf.image = radiusImage;
+            }];
+        }];
+    }];
 }
 
 @end
