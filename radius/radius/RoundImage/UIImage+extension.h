@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface UIImage (extension)
-- (void)was_cornerImageWithSize:(CGSize)size fillColor:(UIColor *)fillColor completion:(void (^)(UIImage *))completion;
-
+//圆形
+- (void)was_roundImageWithSize:(CGSize)size fillColor:(UIColor *)fillColor completion:(void (^)(UIImage *))completion;
+//圆角矩阵
 - (void)was_roundRectImageWithSize:(CGSize)size fillColor:(UIColor *)fillColor radius:(CGFloat)radius completion:(void (^)(UIImage *))completion;
 
 @end
@@ -23,8 +24,8 @@
 @end
 
 @interface UIButton (Extension)
-//圆形
+//button--圆形
 - (void)was_setCircleImageWithUrl:(NSURL *)url placeholder:(UIImage *)image fillColor:(UIColor *)color forState:(UIControlState)state;
-//圆角矩形
+//button--圆角矩形
 - (void)was_setRoundRectImageWithUrl:(NSURL *)url placeholder:(UIImage *)image fillColor:(UIColor *)color cornerRadius:(CGFloat) cornerRadius forState:(UIControlState)state;
 @end

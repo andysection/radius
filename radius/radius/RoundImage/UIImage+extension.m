@@ -11,7 +11,7 @@
 #import "UIButton+WebCache.h"
 
 @implementation UIImage (extension)
-- (void)was_cornerImageWithSize:(CGSize)size fillColor:(UIColor *)fillColor completion:(void (^)(UIImage *))completion {
+- (void)was_roundImageWithSize:(CGSize)size fillColor:(UIColor *)fillColor completion:(void (^)(UIImage *))completion {
     
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         
@@ -104,13 +104,13 @@
     CGSize size = self.frame.size;
     
     //1.现将占位图圆角化，这样就避免了如图片下载失败，使用占位图的时候占位图不是圆角的问题
-    [image was_cornerImageWithSize:size fillColor:color completion:^(UIImage *radiusPlaceHolder) {
+    [image was_roundImageWithSize:size fillColor:color completion:^(UIImage *radiusPlaceHolder) {
         
         //2.使用sd的方法缓存异步下载的图片
         [weakSelf sd_setImageWithURL:url placeholderImage:radiusPlaceHolder completed:^(UIImage *img, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
             
             //3.如果下载成功那么讲下载成功的图进行圆角化
-            [img was_cornerImageWithSize:size fillColor:color completion:^(UIImage *radiusImage) {
+            [img was_roundImageWithSize:size fillColor:color completion:^(UIImage *radiusImage) {
                 weakSelf.image = radiusImage;
             }];
             
@@ -153,11 +153,11 @@
     CGSize size = self.frame.size;
     
     //占位处理
-    [image was_cornerImageWithSize:size fillColor:color completion:^(UIImage *radiusPlaceHolder) {
+    [image was_roundImageWithSize:size fillColor:color completion:^(UIImage *radiusPlaceHolder) {
         //sd
         [weakSelf sd_setImageWithURL:url forState:state placeholderImage:radiusPlaceHolder completed:^(UIImage *img, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
             //3.如果下载成功那么讲下载成功的图进行圆角化
-            [img was_cornerImageWithSize:size fillColor:color completion:^(UIImage *radiusImage) {
+            [img was_roundImageWithSize:size fillColor:color completion:^(UIImage *radiusImage) {
                 [weakSelf setImage:radiusImage forState:state];
             }];
             

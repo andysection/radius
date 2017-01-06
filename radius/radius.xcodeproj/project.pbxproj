@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84666E341E1F54D00005D47A /* UIImage+extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 84666E331E1F54D00005D47A /* UIImage+extension.m */; };
 		8478E71A1E0937A8002D99D0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478E7191E0937A8002D99D0 /* main.m */; };
 		8478E71D1E0937A8002D99D0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478E71C1E0937A8002D99D0 /* AppDelegate.m */; };
 		8478E7201E0937A8002D99D0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478E71F1E0937A8002D99D0 /* ViewController.m */; };
 		8478E7231E0937A8002D99D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8478E7211E0937A8002D99D0 /* Main.storyboard */; };
 		8478E7251E0937A8002D99D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8478E7241E0937A8002D99D0 /* Assets.xcassets */; };
 		8478E7281E0937A8002D99D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8478E7261E0937A8002D99D0 /* LaunchScreen.storyboard */; };
-		8478E7311E0937CD002D99D0 /* UIImage+extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478E7301E0937CD002D99D0 /* UIImage+extension.m */; };
 		8478E7551E0937FC002D99D0 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478E7351E0937FC002D99D0 /* MKAnnotationView+WebCache.m */; };
 		8478E7561E0937FC002D99D0 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478E7371E0937FC002D99D0 /* NSData+ImageContentType.m */; };
 		8478E7571E0937FC002D99D0 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478E7391E0937FC002D99D0 /* SDImageCache.m */; };
@@ -33,6 +33,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		84666E321E1F54D00005D47A /* UIImage+extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+extension.h"; sourceTree = "<group>"; };
+		84666E331E1F54D00005D47A /* UIImage+extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+extension.m"; sourceTree = "<group>"; };
 		8478E7151E0937A8002D99D0 /* radius.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = radius.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8478E7191E0937A8002D99D0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8478E71B1E0937A8002D99D0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -43,8 +45,6 @@
 		8478E7241E0937A8002D99D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8478E7271E0937A8002D99D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8478E7291E0937A8002D99D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8478E72F1E0937CD002D99D0 /* UIImage+extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+extension.h"; sourceTree = "<group>"; };
-		8478E7301E0937CD002D99D0 /* UIImage+extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+extension.m"; sourceTree = "<group>"; };
 		8478E7341E0937FC002D99D0 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		8478E7351E0937FC002D99D0 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		8478E7361E0937FC002D99D0 /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -91,6 +91,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		84666E311E1F54D00005D47A /* RoundImage */ = {
+			isa = PBXGroup;
+			children = (
+				84666E321E1F54D00005D47A /* UIImage+extension.h */,
+				84666E331E1F54D00005D47A /* UIImage+extension.m */,
+			);
+			path = RoundImage;
+			sourceTree = "<group>";
+		};
 		8478E70C1E0937A8002D99D0 = {
 			isa = PBXGroup;
 			children = (
@@ -120,8 +129,6 @@
 				8478E7261E0937A8002D99D0 /* LaunchScreen.storyboard */,
 				8478E7291E0937A8002D99D0 /* Info.plist */,
 				8478E7181E0937A8002D99D0 /* Supporting Files */,
-				8478E72F1E0937CD002D99D0 /* UIImage+extension.h */,
-				8478E7301E0937CD002D99D0 /* UIImage+extension.m */,
 			);
 			path = radius;
 			sourceTree = "<group>";
@@ -137,6 +144,7 @@
 		8478E7321E0937FC002D99D0 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				84666E311E1F54D00005D47A /* RoundImage */,
 				8478E7331E0937FC002D99D0 /* SDWebImage */,
 			);
 			path = lib;
@@ -260,6 +268,7 @@
 				8478E7581E0937FC002D99D0 /* SDWebImageCompat.m in Sources */,
 				8478E75F1E0937FC002D99D0 /* UIImage+GIF.m in Sources */,
 				8478E75D1E0937FC002D99D0 /* SDWebImagePrefetcher.m in Sources */,
+				84666E341E1F54D00005D47A /* UIImage+extension.m in Sources */,
 				8478E71D1E0937A8002D99D0 /* AppDelegate.m in Sources */,
 				8478E71A1E0937A8002D99D0 /* main.m in Sources */,
 				8478E7611E0937FC002D99D0 /* UIImage+WebP.m in Sources */,
@@ -269,7 +278,6 @@
 				8478E75E1E0937FC002D99D0 /* UIButton+WebCache.m in Sources */,
 				8478E7551E0937FC002D99D0 /* MKAnnotationView+WebCache.m in Sources */,
 				8478E7561E0937FC002D99D0 /* NSData+ImageContentType.m in Sources */,
-				8478E7311E0937CD002D99D0 /* UIImage+extension.m in Sources */,
 				8478E75C1E0937FC002D99D0 /* SDWebImageManager.m in Sources */,
 				8478E7591E0937FC002D99D0 /* SDWebImageDecoder.m in Sources */,
 				8478E7571E0937FC002D99D0 /* SDImageCache.m in Sources */,
