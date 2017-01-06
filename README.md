@@ -41,6 +41,7 @@ roundRect or round Image
 * 导入头文件：#import "UIImage+extension.h"即可
 
 ## 缺点：加载的时候会闪一下，原因是先展现了占位图片，之后加载网络图片。
+* 当设置占位图为空时，就不会闪了
 如果有好的建议可以直接留言或者发送邮件：andysection@gmail.com
 
 thank you for your reading !
