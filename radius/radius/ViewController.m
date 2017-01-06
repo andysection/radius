@@ -9,46 +9,48 @@
 #import "ViewController.h"
 #import "UIImageView+WebCache.h"
 #import "UIImage+extension.h"
-#import "UIImageView+Extension.h"
 
 @interface ViewController ()
 @end
 
 @implementation ViewController{
-    UIImageView *_imgView;
+    UIImageView *_imgView1;
+    UIImageView *_imgView2;
     
 }
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-    UIImageView *imageView = [[UIImageView alloc] init];
-    imageView.frame = CGRectMake(100, 100, 128, 128);
     self.view.backgroundColor = [UIColor orangeColor];
     
-    [self.view addSubview:imageView];
-    _imgView = imageView;
+    UIImageView *imageView1 = [[UIImageView alloc] init];
+    imageView1.frame = CGRectMake(123, 100, 128, 128);
+    [self.view addSubview:imageView1];
+    _imgView1 = imageView1;
+    
+    UIImageView *imageView2 = [[UIImageView alloc] init];
+    imageView2.frame = CGRectMake(123, 300, 128, 128);
+    [self.view addSubview:imageView2];
+    _imgView2 = imageView2;
+    
+    UILabel *titleLabel = [[UILabel alloc] init];
+    titleLabel.text = @"click on the window";
+    titleLabel.font = [UIFont systemFontOfSize:20];
+    titleLabel.textColor = [UIColor whiteColor];
+    [titleLabel sizeToFit];
+    [self.view addSubview:titleLabel];
+    titleLabel.center = CGPointMake(190, 480);
 }
 
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    NSURL *url = [NSURL URLWithString:@"http://cc.cocimg.com/api/uploads/20150803/1438567345483993"];
-//    [_imgView sd_setImageWithURL:url completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-//        NSLog(@"image:%@;\n imgView.image:%@",image,_imgView.image);
-//        [image was_roundRectImageWithSize:_imgView.bounds.size fillColor:[UIColor orangeColor] radius:10 completion:^(UIImage *img) {
-//            _imgView.image = img;
-//        }];
-//    }];
+    NSURL *url = [NSURL URLWithString:@"http://cc.cocimg.com/api/uploads/20150803/1438567345483993.jpg"];
     
-//    [_imgView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"head"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-//        NSLog(@"image:%@;\n imgView.image:%@",image,_imgView.image);
-//        [image was_roundRectImageWithSize:_imgView.bounds.size fillColor:[UIColor orangeColor] radius:10 completion:^(UIImage *img) {
-//            _imgView.image = img;
-//        }];
-//    }];
-    
-    [_imgView setCircleImageWithUrl:url placeholder:[UIImage imageNamed:@"head"] fillColor:[UIColor whiteColor]];
+    //圆形
+    [_imgView1 setCircleImageWithUrl:url placeholder:[UIImage imageNamed:@"head"] fillColor:[UIColor whiteColor]];
+    //圆角矩阵
+    [_imgView2 setRoundRectImageWithUrl:url placeholder:[UIImage imageNamed:@"head"] fillColor:[UIColor whiteColor] cornerRadius:20];
 }
 
 -(void)noti{

@@ -95,16 +95,47 @@
 @end
 
 @implementation UIImageView (Extension)
+//圆
 - (void)setCircleImageWithUrl:(NSURL *)url placeholder:(UIImage *)image fillColor:(UIColor *)color{
+    //防止循环引用
     __weak typeof(self) weakSelf = self;
     
-    [image was_cornerImageWithSize:self.frame.size fillColor:color completion:^(UIImage *roundPlaceHolder) {
-        [self sd_setImageWithURL:url placeholderImage:roundPlaceHolder completed:^(UIImage *img, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+    //1.现将占位图圆角化，这样就避免了如图片下载失败，使用占位图的时候占位图不是圆角的问题
+    [image was_cornerImageWithSize:self.frame.size fillColor:color completion:^(UIImage *radiusPlaceHolder) {
+        
+        //2.使用sd的方法缓存异步下载的图片
+        [self sd_setImageWithURL:url placeholderImage:radiusPlaceHolder completed:^(UIImage *img, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            
+            //3.如果下载成功那么讲下载成功的图进行圆角化
             [img was_cornerImageWithSize:weakSelf.frame.size fillColor:color completion:^(UIImage *radiusImage) {
                 weakSelf.image = radiusImage;
             }];
+            
         }];
+        
     }];
+}
+
+//圆形矩阵
+- (void)setRoundRectImageWithUrl:(NSURL *)url placeholder:(UIImage *)image fillColor:(UIColor *)color cornerRadius:(CGFloat) cornerRadius{
+    //防止循环引用
+    __weak typeof(self) weakSelf = self;
+    
+    //1.现将占位图圆角化，这样就避免了如图片下载失败，使用占位图的时候占位图不是圆角的问题
+    [image was_roundRectImageWithSize:self.frame.size fillColor:color radius:cornerRadius completion:^(UIImage *roundRectPlaceHolder) {
+        
+        //2.使用sd的方法缓存异步下载的图片
+        [self sd_setImageWithURL:url placeholderImage:roundRectPlaceHolder completed:^(UIImage *img, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            
+            //3.如果下载成功那么讲下载成功的图进行圆角化
+            [img was_roundRectImageWithSize:weakSelf.frame.size fillColor:color radius:cornerRadius completion:^(UIImage *radiusImage) {
+                weakSelf.image = radiusImage;
+            }];
+            
+        }];
+        
+    }];
+
 }
 
 @end

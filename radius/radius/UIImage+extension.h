@@ -16,5 +16,8 @@
 @end
 
 @interface UIImageView (Extension)
-- (void)setCircleImageWithUrl:(NSURL *)urlstr placeholder:(UIImage *)image fillColor:(UIColor *)color;
+//网络延迟下载--圆形
+- (void)setCircleImageWithUrl:(NSURL *)url placeholder:(UIImage *)image fillColor:(UIColor *)color;
+//网络延迟下载--圆形矩阵
+- (void)setRoundRectImageWithUrl:(NSURL *)url placeholder:(UIImage *)image fillColor:(UIColor *)color cornerRadius:(CGFloat) cornerRadius;
 @end
