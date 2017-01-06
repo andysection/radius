@@ -8,6 +8,7 @@
 
 #import "UIImage+extension.h"
 #import "UIImageView+WebCache.h"
+#import "UIButton+WebCache.h"
 
 @implementation UIImage (extension)
 - (void)was_cornerImageWithSize:(CGSize)size fillColor:(UIColor *)fillColor completion:(void (^)(UIImage *))completion {
@@ -94,20 +95,22 @@
 
 @end
 
+#pragma mark - UIImageView
 @implementation UIImageView (Extension)
 //圆
-- (void)setCircleImageWithUrl:(NSURL *)url placeholder:(UIImage *)image fillColor:(UIColor *)color{
+- (void)was_setCircleImageWithUrl:(NSURL *)url placeholder:(UIImage *)image fillColor:(UIColor *)color{
     //防止循环引用
     __weak typeof(self) weakSelf = self;
+    CGSize size = self.frame.size;
     
     //1.现将占位图圆角化，这样就避免了如图片下载失败，使用占位图的时候占位图不是圆角的问题
-    [image was_cornerImageWithSize:self.frame.size fillColor:color completion:^(UIImage *radiusPlaceHolder) {
+    [image was_cornerImageWithSize:size fillColor:color completion:^(UIImage *radiusPlaceHolder) {
         
         //2.使用sd的方法缓存异步下载的图片
-        [self sd_setImageWithURL:url placeholderImage:radiusPlaceHolder completed:^(UIImage *img, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        [weakSelf sd_setImageWithURL:url placeholderImage:radiusPlaceHolder completed:^(UIImage *img, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
             
             //3.如果下载成功那么讲下载成功的图进行圆角化
-            [img was_cornerImageWithSize:weakSelf.frame.size fillColor:color completion:^(UIImage *radiusImage) {
+            [img was_cornerImageWithSize:size fillColor:color completion:^(UIImage *radiusImage) {
                 weakSelf.image = radiusImage;
             }];
             
@@ -117,19 +120,63 @@
 }
 
 //圆形矩阵
-- (void)setRoundRectImageWithUrl:(NSURL *)url placeholder:(UIImage *)image fillColor:(UIColor *)color cornerRadius:(CGFloat) cornerRadius{
+- (void)was_setRoundRectImageWithUrl:(NSURL *)url placeholder:(UIImage *)image fillColor:(UIColor *)color cornerRadius:(CGFloat) cornerRadius{
     //防止循环引用
     __weak typeof(self) weakSelf = self;
+    CGSize size = self.frame.size;
     
     //1.现将占位图圆角化，这样就避免了如图片下载失败，使用占位图的时候占位图不是圆角的问题
-    [image was_roundRectImageWithSize:self.frame.size fillColor:color radius:cornerRadius completion:^(UIImage *roundRectPlaceHolder) {
+    [image was_roundRectImageWithSize:size fillColor:color radius:cornerRadius completion:^(UIImage *roundRectPlaceHolder) {
         
         //2.使用sd的方法缓存异步下载的图片
-        [self sd_setImageWithURL:url placeholderImage:roundRectPlaceHolder completed:^(UIImage *img, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        [weakSelf sd_setImageWithURL:url placeholderImage:roundRectPlaceHolder completed:^(UIImage *img, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
             
             //3.如果下载成功那么讲下载成功的图进行圆角化
-            [img was_roundRectImageWithSize:weakSelf.frame.size fillColor:color radius:cornerRadius completion:^(UIImage *radiusImage) {
+            [img was_roundRectImageWithSize:size fillColor:color radius:cornerRadius completion:^(UIImage *radiusImage) {
                 weakSelf.image = radiusImage;
+            }];
+            
+        }];
+        
+    }];
+
+}
+
+@end
+
+#pragma mark - UIButton
+
+@implementation UIButton (Extension)
+//圆形
+- (void)was_setCircleImageWithUrl:(NSURL *)url placeholder:(UIImage *)image fillColor:(UIColor *)color forState:(UIControlState)state {
+    __weak typeof(self) weakSelf = self;
+    CGSize size = self.frame.size;
+    
+    //占位处理
+    [image was_cornerImageWithSize:size fillColor:color completion:^(UIImage *radiusPlaceHolder) {
+        //sd
+        [weakSelf sd_setImageWithURL:url forState:state placeholderImage:radiusPlaceHolder completed:^(UIImage *img, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            //3.如果下载成功那么讲下载成功的图进行圆角化
+            [img was_cornerImageWithSize:size fillColor:color completion:^(UIImage *radiusImage) {
+                [weakSelf setImage:radiusImage forState:state];
+            }];
+            
+        }];
+        
+    }];
+}
+//圆角矩阵
+- (void)was_setRoundRectImageWithUrl:(NSURL *)url placeholder:(UIImage *)image fillColor:(UIColor *)color cornerRadius:(CGFloat) cornerRadius forState:(UIControlState)state{
+    __weak typeof(self) weakSelf = self;
+    CGSize size = self.frame.size;
+    
+    //占位处理
+    [image was_roundRectImageWithSize:size fillColor:color radius:cornerRadius completion:^(UIImage *roundRectPlaceHolder) {
+        //sd
+        [weakSelf sd_setImageWithURL:url forState:state placeholderImage:roundRectPlaceHolder completed:^(UIImage *img, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            //3.如果下载成功那么讲下载成功的图进行圆角化
+            [img was_roundRectImageWithSize:size fillColor:color radius:cornerRadius completion:^(UIImage *roundRectImage) {
+                [weakSelf setImage:roundRectImage forState:state];
             }];
             
         }];
