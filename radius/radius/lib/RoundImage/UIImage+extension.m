@@ -99,6 +99,7 @@
 @implementation UIImageView (Extension)
 //圆
 - (void)was_setCircleImageWithUrl:(NSURL *)url placeholder:(UIImage *)image fillColor:(UIColor *)color{
+    [self.superview layoutIfNeeded];
     //防止循环引用
     __weak typeof(self) weakSelf = self;
     CGSize size = self.frame.size;
@@ -121,6 +122,7 @@
 
 //圆形矩阵
 - (void)was_setRoundRectImageWithUrl:(NSURL *)url placeholder:(UIImage *)image fillColor:(UIColor *)color cornerRadius:(CGFloat) cornerRadius{
+    [self.superview layoutIfNeeded];
     //防止循环引用
     __weak typeof(self) weakSelf = self;
     CGSize size = self.frame.size;
@@ -149,6 +151,7 @@
 @implementation UIButton (Extension)
 //圆形
 - (void)was_setCircleImageWithUrl:(NSURL *)url placeholder:(UIImage *)image fillColor:(UIColor *)color forState:(UIControlState)state {
+    [self.superview layoutIfNeeded];
     __weak typeof(self) weakSelf = self;
     CGSize size = self.frame.size;
     
@@ -167,6 +170,7 @@
 }
 //圆角矩阵
 - (void)was_setRoundRectImageWithUrl:(NSURL *)url placeholder:(UIImage *)image fillColor:(UIColor *)color cornerRadius:(CGFloat) cornerRadius forState:(UIControlState)state{
+    [self.superview layoutIfNeeded];
     __weak typeof(self) weakSelf = self;
     CGSize size = self.frame.size;
     
