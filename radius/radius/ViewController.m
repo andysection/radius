@@ -53,17 +53,17 @@
     [self.view addSubview:titleLabel];
     titleLabel.center = CGPointMake(190, 480);
     
-    NSURL *url = [NSURL URLWithString:@"http://cc.cocimg.com/api/uploads/20150803/1438567345483993.jpg"];
-    
+//    NSURL *url = [NSURL URLWithString:@"http://cc.cocimg.com/api/uploads/20150803/1438567345483993.jpg"];
+    NSString *urlString = @"http://cc.cocimg.com/api/uploads/20150803/1438567345483993.jpg";
     //圆形
-    [_imgView1 was_setCircleImageWithUrl:url placeholder:[UIImage imageNamed:@"head"] fillColor:[UIColor whiteColor]];
+    [_imgView1 was_setCircleImageWithUrlString:urlString placeholder:[UIImage imageNamed:@"head"] fillColor:[UIColor whiteColor]];
     //圆角矩阵
-    [_imgView2 was_setRoundRectImageWithUrl:url placeholder:[UIImage imageNamed:@"head"] fillColor:[UIColor whiteColor] cornerRadius:20];
+    [_imgView2 was_setRoundRectImageWithUrlString:urlString placeholder:[UIImage imageNamed:@"head"] fillColor:[UIColor whiteColor] cornerRadius:20];
     
     //圆形按钮
-    [_btn1 was_setCircleImageWithUrl:url placeholder:[UIImage imageNamed:@"head"] fillColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [_btn1 was_setCircleImageWithUrlString:urlString placeholder:[UIImage imageNamed:@"head"] fillColor:[UIColor whiteColor] forState:UIControlStateNormal];
     //圆角矩阵按钮
-    [_btn2 was_setRoundRectImageWithUrl:url placeholder:[UIImage imageNamed:@"head"] fillColor:[UIColor whiteColor] cornerRadius:20 forState:UIControlStateNormal];
+    [_btn2 was_setRoundRectImageWithUrlString:urlString placeholder:[UIImage imageNamed:@"head"] fillColor:[UIColor whiteColor] cornerRadius:20 forState:UIControlStateNormal];
 }
 
 

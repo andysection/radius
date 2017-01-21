@@ -98,8 +98,9 @@
 #pragma mark - UIImageView
 @implementation UIImageView (Extension)
 //圆
-- (void)was_setCircleImageWithUrl:(NSURL *)url placeholder:(UIImage *)image fillColor:(UIColor *)color{
+- (void)was_setCircleImageWithUrlString:(NSString *)urlString placeholder:(UIImage *)image fillColor:(UIColor *)color{
     [self.superview layoutIfNeeded];
+    NSURL *url = [NSURL URLWithString:urlString];
     //防止循环引用
     __weak typeof(self) weakSelf = self;
     CGSize size = self.frame.size;
@@ -121,8 +122,9 @@
 }
 
 //圆形矩阵
-- (void)was_setRoundRectImageWithUrl:(NSURL *)url placeholder:(UIImage *)image fillColor:(UIColor *)color cornerRadius:(CGFloat) cornerRadius{
+- (void)was_setRoundRectImageWithUrlString:(NSString *)urlString placeholder:(UIImage *)image fillColor:(UIColor *)color cornerRadius:(CGFloat) cornerRadius{
     [self.superview layoutIfNeeded];
+     NSURL *url = [NSURL URLWithString:urlString];
     //防止循环引用
     __weak typeof(self) weakSelf = self;
     CGSize size = self.frame.size;
@@ -150,7 +152,8 @@
 
 @implementation UIButton (Extension)
 //圆形
-- (void)was_setCircleImageWithUrl:(NSURL *)url placeholder:(UIImage *)image fillColor:(UIColor *)color forState:(UIControlState)state {
+- (void)was_setCircleImageWithUrlString:(NSString *)urlString placeholder:(UIImage *)image fillColor:(UIColor *)color forState:(UIControlState)state {
+     NSURL *url = [NSURL URLWithString:urlString];
     [self.superview layoutIfNeeded];
     __weak typeof(self) weakSelf = self;
     CGSize size = self.frame.size;
@@ -169,7 +172,8 @@
     }];
 }
 //圆角矩阵
-- (void)was_setRoundRectImageWithUrl:(NSURL *)url placeholder:(UIImage *)image fillColor:(UIColor *)color cornerRadius:(CGFloat) cornerRadius forState:(UIControlState)state{
+- (void)was_setRoundRectImageWithUrlString:(NSString *)urlString placeholder:(UIImage *)image fillColor:(UIColor *)color cornerRadius:(CGFloat) cornerRadius forState:(UIControlState)state{
+     NSURL *url = [NSURL URLWithString:urlString];
     [self.superview layoutIfNeeded];
     __weak typeof(self) weakSelf = self;
     CGSize size = self.frame.size;
