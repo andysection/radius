@@ -58,7 +58,7 @@
     //圆形
     [_imgView1 was_setCircleImageWithUrlString:urlString placeholder:[UIImage imageNamed:@"head"] fillColor:[UIColor whiteColor]];
     //圆角矩阵
-    [_imgView2 was_setRoundRectImageWithUrlString:urlString placeholder:[UIImage imageNamed:@"head"] fillColor:[UIColor whiteColor] cornerRadius:20];
+    [_imgView2 was_setRoundRectImageWithUrlString:urlString placeholder:nil fillColor:[UIColor whiteColor] cornerRadius:20];
     
     //圆形按钮
     [_btn1 was_setCircleImageWithUrlString:urlString placeholder:[UIImage imageNamed:@"head"] fillColor:[UIColor whiteColor] forState:UIControlStateNormal];
