@@ -2,6 +2,9 @@
 roundRect or round Image
 # 结合SDWebImage实现圆角图片或圆角矩形图片(也可实现静态图片圆角功能)
 ## 网络下载图片
+
+![新版本 2017年2月16日 下午2.24.47.png](http://upload-images.jianshu.io/upload_images/2860910-5ab21bf9a5c801f5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/375)
+
 > 思路1：通过SD提供的函数：
 
 ```
@@ -35,6 +38,29 @@ roundRect or round Image
 //圆角矩阵
 - (void)was_roundRectImageWithSize:(CGSize)size fillColor:(UIColor *)fillColor radius:(CGFloat)radius completion:(void (^)(UIImage *))completion;
 ```
+
+> 2017.2.16更新
+
+## 新增方法
+* UIImageView:
+
+```
+//网络延迟下载--圆形    背景色为透明 无背景色
+- (void)was_setCircleImageWithUrlString:(NSString *)urlString placeholder:(UIImage *)image;
+//网络延迟下载--圆形矩阵 背景色为透明 无背景色
+- (void)was_setRoundRectImageWithUrlString:(NSString *)urlString placeholder:(UIImage *)image cornerRadius:(CGFloat) cornerRadius;
+```
+* UIButton:
+
+```
+//button--圆形    背景为透明 无背景色
+- (void)was_setCircleImageWithUrlString:(NSString *)urlString placeholder:(UIImage *)image forState:(UIControlState)state;
+//button--圆角矩形 背景为透明 无背景色
+- (void)was_setRoundRectImageWithUrlString:(NSString *)urlString placeholder:(UIImage *)image cornerRadius:(CGFloat) cornerRadius forState:(UIControlState)state;
+```
+
+* 修复了placeholder为空时候崩溃问题
+
 # 使用方法
 * 在项目中加入SDWebImage
 * 将文件夹RoundImage内的UIImage+extension.h与UIImage+extension.m拖入项目
@@ -42,6 +68,7 @@ roundRect or round Image
 
 ## 缺点：加载的时候会闪一下，原因是先展现了占位图片，之后加载网络图片。
 * 当设置占位图为空时，就不会闪了
+
 如果有好的建议可以直接留言或者发送邮件：andysection@gmail.com
 
 thank you for your reading !
