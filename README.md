@@ -17,14 +17,14 @@ roundRect or round Image
 > 思路2：直接将placeholder占位图直接处理为圆角图片，然后再调用sd提供的函数。
 
 ## 目前可支持UIImageView和UIButton分别调用方法：
-* UIImageView:
+* UIImageView:（color设置为nil时，背景色为透明）
 ```
 //网络延迟下载--圆形
 - (void)was_setCircleImageWithUrlString:(NSString *)urlString placeholder:(UIImage *)image fillColor:(UIColor *)color;
 //网络延迟下载--圆形矩阵
 - (void)was_setRoundRectImageWithUrlString:(NSString *)urlString placeholder:(UIImage *)image fillColor:(UIColor *)color cornerRadius:(CGFloat) cornerRadius;
 ```
-* UIButton:
+* UIButton:（color设置为nil时，背景色为透明）
 ```
 //button--圆形
 - (void)was_setCircleImageWithUrlString:(NSString *)urlString placeholder:(UIImage *)image fillColor:(UIColor *)color forState:(UIControlState)state;
