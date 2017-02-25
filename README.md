@@ -66,6 +66,10 @@ roundRect or round Image
 * 将文件夹RoundImage内的UIImage+extension.h与UIImage+extension.m拖入项目
 * 导入头文件：#import "UIImage+extension.h"即可
 
+## 注意点：
+* 如果背景色为nil的话，理论上会影响流畅度，最好还是讲背景色设为和cell背景色一样，以提高tableview滑动的流畅度。
+*以上提供的方法不会受离屏渲染影响，但是会Color Blended Layers方面的影响，这就是影响到tableview性能的原因，但是影响十分小。
+
 ## 缺点：加载的时候会闪一下，原因是先展现了占位图片，之后加载网络图片。
 * 当设置占位图为空时，就不会闪了
 
