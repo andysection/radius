@@ -75,4 +75,4 @@ roundRect or round Image
 
 如果有好的建议可以直接留言或者发送邮件：andysection@gmail.com
 
-thank you for your reading !
+Thanks for your reading !
